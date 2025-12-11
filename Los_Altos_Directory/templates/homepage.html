@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage - Los Altos de Ciudad Jardin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="homepage-container">
+        <div class="homepage-header">
+            <h1 class="homepage-title">Los Altos de Ciudad Jardin</h1>
+            <div class="logo-container">
+                <img src="{{ url_for('static', filename='logo.jpeg') }}" alt="Ciudad Jardin II Gurabo Logo" class="logo-image">
+            </div>
+            
+            <div class="nav-buttons">
+                <a href="{{ url_for('residents') }}" class="btn-nav">Residents</a>
+                <a href="{{ url_for('services') }}" class="btn-nav">Services</a>
+            </div>
+            
+            <a href="{{ url_for('logout') }}" class="logout-btn">Log Out</a>
+        </div>
+    </div>
+</body>
+</html>

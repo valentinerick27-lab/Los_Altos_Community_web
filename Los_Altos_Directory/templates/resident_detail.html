@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ resident.name }} - Los Altos de Ciudad Jardin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="detail-container">
+        <div class="search-header">
+            <h1>Resident Details</h1>
+        </div>
+        
+        <div class="detail-card">
+            <h2>{{ resident.name }}</h2>
+            
+            <div class="detail-info">
+                <span class="label">House Number:</span> {{ resident.house_number }}
+            </div>
+            
+            <div class="detail-info">
+                <span class="label">Email:</span> {{ resident.email }}
+            </div>
+            
+            {% if resident.phone_number %}
+            <div class="detail-info">
+                <span class="label">Phone Number:</span> {{ resident.phone_number }}
+            </div>
+            {% endif %}
+            
+            <a href="{{ url_for('residents') }}" class="back-button">← Back to Residents</a>
+        </div>
+    </div>
+</body>
+</html>

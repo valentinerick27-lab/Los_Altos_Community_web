@@ -1,0 +1,476 @@
+/* Main Color Scheme:
+   Primary: #FFFFFF (White)
+   Secondary: #006D5B (Teal/Green)
+   Accent Black: #000000
+   Accent Gray: #808080
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #FFFFFF;
+    color: #000000;
+    line-height: 1.6;
+}
+
+/* Landing Page Styles */
+.landing-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #006D5B 0%, #004d42 100%);
+    padding: 20px;
+}
+
+.landing-title {
+    color: #FFFFFF;
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 50px;
+    font-weight: 600;
+}
+
+.button-container {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn {
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    border: 2px solid #FFFFFF;
+    background-color: #FFFFFF;
+    color: #006D5B;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.btn:hover {
+    background-color: transparent;
+    color: #FFFFFF;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Form Container Styles */
+.form-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #006D5B 0%, #004d42 100%);
+    padding: 20px;
+}
+
+.form-box {
+    background-color: #FFFFFF;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 600px;
+}
+
+.form-box h1 {
+    color: #000000;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    color: #000000;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-group input {
+    padding: 12px;
+    border: 2px solid #808080;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #006D5B;
+}
+
+.form-group input::placeholder {
+    color: #808080;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 15px;
+    background-color: #006D5B;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.btn-submit:hover {
+    background-color: #005246;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 109, 91, 0.3);
+}
+
+.error-message {
+    background-color: #ffebee;
+    color: #c62828;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+    border: 1px solid #ef9a9a;
+}
+
+.form-footer {
+    text-align: center;
+    margin-top: 20px;
+    color: #808080;
+}
+
+.form-footer a {
+    color: #006D5B;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.form-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Homepage Styles */
+.homepage-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #006D5B 0%, #004d42 100%);
+    padding: 20px;
+}
+
+.homepage-header {
+    text-align: center;
+    color: #FFFFFF;
+    margin-bottom: 40px;
+}
+
+.homepage-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.logo-container {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.logo-placeholder {
+    width: 120px;
+    height: 120px;
+    background-color: #FFFFFF;
+    border-radius: 16px;
+    margin: 0 auto 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #808080;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.btn-nav {
+    padding: 15px 35px;
+    background-color: #FFFFFF;
+    color: #006D5B;
+    border: 2px solid #FFFFFF;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-nav:hover {
+    background-color: transparent;
+    color: #FFFFFF;
+    transform: translateY(-2px);
+}
+
+.logout-btn {
+    display: block;
+    margin: 20px auto 0;
+    padding: 10px 30px;
+    background-color: transparent;
+    color: #FFFFFF;
+    border: 2px solid #FFFFFF;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #FFFFFF;
+    color: #006D5B;
+}
+
+/* Search Page Styles */
+.search-container {
+    min-height: 100vh;
+    background-color: #FFFFFF;
+    padding: 20px;
+}
+
+.search-header {
+    background-color: #006D5B;
+    color: #FFFFFF;
+    padding: 30px;
+    text-align: center;
+    margin-bottom: 30px;
+    border-radius: 12px;
+}
+
+.search-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.search-box {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 1.1rem;
+    border: 2px solid #808080;
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: #006D5B;
+}
+
+.add-button {
+    display: inline-block;
+    margin: 20px 0;
+    padding: 12px 30px;
+    background-color: #006D5B;
+    color: #FFFFFF;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.add-button:hover {
+    background-color: #005246;
+    transform: translateY(-2px);
+}
+
+.results-container {
+    max-width: 800px;
+    margin: 30px auto;
+    display: grid;
+    gap: 15px;
+}
+
+.result-card {
+    background-color: #FFFFFF;
+    border: 2px solid #808080;
+    border-radius: 8px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.result-card:hover {
+    border-color: #006D5B;
+    box-shadow: 0 4px 12px rgba(0, 109, 91, 0.2);
+    transform: translateY(-2px);
+}
+
+.result-card h3 {
+    color: #006D5B;
+    margin-bottom: 10px;
+}
+
+.result-card p {
+    color: #000000;
+    margin: 5px 0;
+}
+
+.result-card .label {
+    color: #808080;
+    font-weight: 600;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.no-results {
+    text-align: center;
+    color: #808080;
+    padding: 40px;
+    font-size: 1.2rem;
+}
+
+/* Detail Page Styles */
+.detail-container {
+    min-height: 100vh;
+    background-color: #FFFFFF;
+    padding: 20px;
+}
+
+.detail-card {
+    max-width: 700px;
+    margin: 30px auto;
+    background-color: #FFFFFF;
+    border: 3px solid #006D5B;
+    border-radius: 16px;
+    padding: 40px;
+}
+
+.detail-card h2 {
+    color: #006D5B;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.detail-info {
+    margin: 15px 0;
+    font-size: 1.1rem;
+}
+
+.detail-info .label {
+    color: #808080;
+    font-weight: 600;
+}
+
+.back-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 30px;
+    background-color: #006D5B;
+    color: #FFFFFF;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #005246;
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .landing-title {
+        font-size: 2rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .button-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn-nav {
+        width: 80%;
+        max-width: 300px;
+        text-align: center;
+    }
+
+    .homepage-title {
+        font-size: 2rem;
+    }
+
+    .logo-container {
+        width: 150px;
+        height: 150px;
+    }
+
+    .search-header h1 {
+        font-size: 2rem;
+    }
+
+    .detail-card {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .landing-title {
+        font-size: 1.5rem;
+    }
+
+    .form-box {
+        padding: 20px;
+    }
+
+    .form-box h1 {
+        font-size: 2rem;
+    }
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ service.name }} - Los Altos de Ciudad Jardin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="detail-container">
+        <div class="search-header">
+            <h1>Service Details</h1>
+        </div>
+        
+        <div class="detail-card">
+            <h2>{{ service.name }}</h2>
+            
+            <div class="detail-info">
+                <span class="label">Email:</span> {{ service.email }}
+            </div>
+            
+            <div class="detail-info">
+                <span class="label">Phone Number:</span> {{ service.phone_number }}
+            </div>
+            
+            <div class="detail-info">
+                <span class="label">Address:</span> {{ service.address }}
+            </div>
+            
+            <a href="{{ url_for('services') }}" class="back-button">← Back to Services</a>
+        </div>
+    </div>
+</body>
+</html>

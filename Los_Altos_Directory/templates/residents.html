@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Residents - Los Altos de Ciudad Jardin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="search-container">
+        <div class="search-header">
+            <h1>Residents</h1>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search for residents...">
+            </div>
+        </div>
+        
+        <div style="text-align: center;">
+            <a href="{{ url_for('homepage') }}" class="back-button">← Back to Home</a>
+        </div>
+        
+        <div class="results-container" id="resultsContainer">
+            <div class="no-results">Start typing to search for residents...</div>
+        </div>
+    </div>
+    
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const resultsContainer = document.getElementById('resultsContainer');
+        let searchTimeout;
+        
+        searchInput.addEventListener('input', function() {
+            clearTimeout(searchTimeout);
+            
+            const query = this.value.trim();
+            
+            searchTimeout = setTimeout(() => {
+                if (query.length === 0) {
+                    loadInitialResults();
+                } else {
+                    searchResidents(query);
+                }
+            }, 300);
+        });
+        
+        function loadInitialResults() {
+            fetch('/api/search_residents')
+                .then(response => response.json())
+                .then(data => displayResults(data))
+                .catch(error => {
+                    console.error('Error:', error);
+                    resultsContainer.innerHTML = '<div class="no-results">Error loading residents</div>';
+                });
+        }
+        
+        function searchResidents(query) {
+            fetch(`/api/search_residents?q=${encodeURIComponent(query)}`)
+                .then(response => response.json())
+                .then(data => displayResults(data))
+                .catch(error => {
+                    console.error('Error:', error);
+                    resultsContainer.innerHTML = '<div class="no-results">Error searching residents</div>';
+                });
+        }
+        
+        function displayResults(residents) {
+            if (residents.length === 0) {
+                resultsContainer.innerHTML = '<div class="no-results">No residents found</div>';
+                return;
+            }
+            
+            resultsContainer.innerHTML = residents.map(resident => `
+                <div class="result-card" onclick="window.location.href='/residents/${resident.id}'">
+                    <h3>${resident.name}</h3>
+                    <p><span class="label">House Number:</span> ${resident.house_number}</p>
+                    <p><span class="label">Email:</span> ${resident.email}</p>
+                    ${resident.phone_number ? `<p><span class="label">Phone:</span> ${resident.phone_number}</p>` : ''}
+                </div>
+            `).join('');
+        }
+        
+        // Load initial results on page load
+        loadInitialResults();
+    </script>
+</body>
+</html>

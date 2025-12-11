@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Los Altos de Ciudad Jardin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="search-container">
+        <div class="search-header">
+            <h1>Services</h1>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search for services...">
+            </div>
+        </div>
+        
+        <div style="text-align: center;">
+            <a href="{{ url_for('add_service') }}" class="add-button">+ Add Service</a>
+            <a href="{{ url_for('homepage') }}" class="back-button" style="margin-left: 15px;">← Back to Home</a>
+        </div>
+        
+        <div class="results-container" id="resultsContainer">
+            <div class="no-results">Start typing to search for services...</div>
+        </div>
+    </div>
+    
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const resultsContainer = document.getElementById('resultsContainer');
+        let searchTimeout;
+        
+        searchInput.addEventListener('input', function() {
+            clearTimeout(searchTimeout);
+            
+            const query = this.value.trim();
+            
+            searchTimeout = setTimeout(() => {
+                if (query.length === 0) {
+                    loadInitialResults();
+                } else {
+                    searchServices(query);
+                }
+            }, 300);
+        });
+        
+        function loadInitialResults() {
+            fetch('/api/search_services')
+                .then(response => response.json())
+                .then(data => displayResults(data))
+                .catch(error => {
+                    console.error('Error:', error);
+                    resultsContainer.innerHTML = '<div class="no-results">Error loading services</div>';
+                });
+        }
+        
+        function searchServices(query) {
+            fetch(`/api/search_services?q=${encodeURIComponent(query)}`)
+                .then(response => response.json())
+                .then(data => displayResults(data))
+                .catch(error => {
+                    console.error('Error:', error);
+                    resultsContainer.innerHTML = '<div class="no-results">Error searching services</div>';
+                });
+        }
+        
+        function displayResults(services) {
+            if (services.length === 0) {
+                resultsContainer.innerHTML = '<div class="no-results">No services found</div>';
+                return;
+            }
+            
+            resultsContainer.innerHTML = services.map(service => `
+                <div class="result-card" onclick="window.location.href='/services/${service.id}'">
+                    <h3>${service.name}</h3>
+                    <p><span class="label">Email:</span> ${service.email}</p>
+                    <p><span class="label">Phone:</span> ${service.phone_number}</p>
+                    <p><span class="label">Address:</span> ${service.address}</p>
+                </div>
+            `).join('');
+        }
+        
+        // Load initial results on page load
+        loadInitialResults();
+    </script>
+</body>
+</html>

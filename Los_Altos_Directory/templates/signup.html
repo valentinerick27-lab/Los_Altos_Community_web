@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Los Altos de Ciudad Jardin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-box">
+            <h1>Sign Up</h1>
+            
+            {% if error %}
+            <div class="error-message">{{ error }}</div>
+            {% endif %}
+            
+            <form method="POST" action="{{ url_for('signup') }}">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Enter email" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="house_number">House Number</label>
+                        <input type="text" id="house_number" name="house_number" placeholder="Enter house #" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone_number">Phone Number</label>
+                        <input type="tel" id="phone_number" name="phone_number" placeholder="Enter phone #">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Enter password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm_password">Confirm Password</label>
+                        <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm password" required>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn-submit">Sign Up</button>
+            </form>
+            
+            <div class="form-footer">
+                Already have an account? <a href="{{ url_for('signin') }}">Sign in here</a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.querySelector('form').addEventListener('submit', function(e) {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm_password').value;
+            
+            if (password !== confirmPassword) {
+                e.preventDefault();
+                alert('Passwords do not match!');
+            }
+        });
+    </script>
+</body>
+</html>
