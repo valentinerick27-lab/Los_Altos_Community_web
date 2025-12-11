@@ -231,16 +231,5 @@ def add_service():
 # ----------------------------
 
 if __name__ == '__main__':
-    print("\nCreating database tables...")
-    with app.app_context():
-        db.create_all()
-    print("Database ready!")
-    print("\n" + "="*50)
-    print(" Starting Los Altos de Ciudad Jardin Website!")
-    print("="*50)
-    print("\n Open your browser and go to:")
-    print("   http://127.0.0.1:5000")
-    print("\n Press CTRL+C to stop the server\n")
-    print("="*50 + "\n")
-
-    app.run(debug=True)
+    init_db()
+    app.run(host='0.0.0.0', port=5000)
